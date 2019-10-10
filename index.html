@@ -4,8 +4,25 @@
     <meta charset="utf-8">
     <title>Vector Test</title>
     <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/debug.css">
   </head>
   <body>
+
+    <div id="debug_console" style="display: block;">
+
+      <form class="debug box" action="javascript:void(0)" onsubmit="alert('now')" method="post" style="display: inline-grid;">
+        <span>Generate Object</span>
+        <table>
+          <tr><td>X: </td><td><input type="number" name="x" min="0" placeholder="0"/></td></tr>
+          <tr><td>Y: </td><td><input type="number" name="y" min="0" placeholder="0"/></td></tr>
+          <tr><td><i>AB</i>: </td><td><input type="text" name="vAB" placeholder="8,4;-6"/></td></tr>
+        </table>
+
+        <button type="submit">Generate</button>
+        <button type="submit">Generate random</button>
+      </form>
+
+    </div>
 
     <div id="main_window"></div>
 
