@@ -28,9 +28,19 @@ class CircleObject extends BaseObject {
       this.vector.x = (this.vector.x * -1);
     }
     // wall collision | east
-    if (this.pos_x+this.radius >= this.Area.HTMLObject.offsetWidth) {
+    if ( (this.pos_x+this.radius) >= this.Area.HTMLObject.offsetWidth) {
       this.eventCollisionWall("east");
       this.vector.x = (this.vector.x * -1);
+    }
+    // wall collision | nouth
+    if ( (this.pos_y-this.radius) <= 0) {
+      this.eventCollisionWall("nouth");
+      this.vector.y = (this.vector.y * -1);
+    }
+    // wall collision | south
+    if ( (this.pos_y+this.radius) >= this.Area.HTMLObject.offsetHeight) {
+      this.eventCollisionWall("south");
+      this.vector.y = (this.vector.y * -1);
     }
 
     // updating display

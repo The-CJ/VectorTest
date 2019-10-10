@@ -26,8 +26,8 @@ function debugGenerateRandom() {
       "x": Math.floor(Math.random() * 20)-10,
       "y": Math.floor(Math.random() * 20)-10
     },
-    "x": Math.floor(Math.random() * 600) - 300,
-    "y": Math.floor(Math.random() * 600) - 300
+    "x": Math.floor(Math.random() * 600),
+    "y": Math.floor(Math.random() * 600)
   };
   INIT_PLAY_AREA.generateObject(r["type"], r);
 }
