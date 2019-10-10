@@ -35,7 +35,10 @@ class BaseObject {
   eventCreate() {
     if (LOGGING) { console.log(this); }
   }
-  eventUpdate() {
+  eventUpdateStart() {
+    if (LOGGING) { console.log(this); }
+  }
+  eventUpdateEnd() {
     if (LOGGING) { console.log(this); }
   }
   eventCollisionWall(site="UNKNOWN") {

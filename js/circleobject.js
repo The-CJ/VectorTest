@@ -13,6 +13,7 @@ class CircleObject extends BaseObject {
   }
 
   update() {
+    this.eventUpdateStart();
     // make it smooth
     if (this.Area.smooth) {
       this.HTMLObject.style.transitionProperty = "top,left";
@@ -74,6 +75,11 @@ class CircleObject extends BaseObject {
     this.HTMLObject.style.height = (this.radius * 2)+"px";
     this.HTMLObject.style.left = (this.pos_x - this.radius)+"px";
     this.HTMLObject.style.top = (this.pos_y - this.radius)+"px";
-    this.eventUpdate();
+    this.eventUpdateEnd();
+  }
+
+  eventUpdateEnd() {
+    // gravitation ?
+    // IDEA: this.vector.y = this.vector.y + 9.81;
   }
 }
