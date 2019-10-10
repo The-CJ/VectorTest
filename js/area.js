@@ -15,6 +15,8 @@ class PlayArea {
 
   addObject(Obj) {
     this.objects.push(Obj);
+    Obj.linkToHTMLArea(this);
+    Obj.generateHTMLObject();
     return true;
   }
 }

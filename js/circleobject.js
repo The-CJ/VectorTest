@@ -3,4 +3,8 @@ class CircleObject extends BaseObject {
     super(x);
     this.radius = 0;
   }
+
+  generateHTMLObject() {
+    alert("TODO");
+  }
 }
