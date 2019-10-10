@@ -5,6 +5,8 @@ class CircleObject extends BaseObject {
   }
 
   generateHTMLObject() {
-    alert("TODO");
+    // generate from phantom and stick to this.HTMLObject
+    this.HTMLObject = document.querySelector("[phantom-models] > .object.circle").cloneNode(true);
+    this.Area.HTMLObject.appendChild(this.HTMLObject);
   }
 }

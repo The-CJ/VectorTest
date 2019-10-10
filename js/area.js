@@ -5,6 +5,7 @@ class PlayArea {
     if (!this.HTMLObject) { throw "can't find #"+this.area_id; }
 
     this.objects = x["objects"] ? x["objects"] : [];
+    this.update_delay = x["update_delay"] ? x["update_delay"] : 100;
   }
 
   generateObject(name, values={}) {
