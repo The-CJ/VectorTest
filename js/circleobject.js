@@ -37,7 +37,7 @@ class CircleObject extends BaseObject {
 
     // wall collision | east
     if ( (this.pos_x+this.radius) >= this.Area.HTMLObject.offsetWidth) {
-      if (this.vector.y < 0) {
+      if (this.vector.x < 0) {
         // means we hit the wall, BUT we are moving away from it, means we are in it
         this.pos_x = this.Area.HTMLObject.offsetWidth - this.radius; // a radius between center and wall
         this.eventOOB("east");
@@ -61,7 +61,7 @@ class CircleObject extends BaseObject {
     if ( (this.pos_y+this.radius) >= this.Area.HTMLObject.offsetHeight) {
       if (this.vector.y < 0) {
         // means we hit the wall, BUT we are moving away from it, means we are in it
-        this.pos_x = this.Area.HTMLObject.offsetHeight - this.radius; // a radius between center and wall
+        this.pos_y = this.Area.HTMLObject.offsetHeight - this.radius; // a radius between center and wall
         this.eventOOB("south");
       }
       this.eventCollisionWall("south");

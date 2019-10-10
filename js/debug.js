@@ -9,6 +9,11 @@ function debugStop() {
 
 function debugSmooth() {
   INIT_PLAY_AREA.smooth = INIT_PLAY_AREA.smooth ? false : true;
+  if (!INIT_PLAY_AREA.smooth) {
+    for (var Node of document.querySelectorAll(".object")) {
+      Node.style.transition = false;
+    }
+  }
 }
 
 function debugStart() {
@@ -24,6 +29,11 @@ function debugGenerate() {
   var ValueNode = document.getElementById('debug_generate');
   var values = Utils.extractNameValues(ValueNode);
   INIT_PLAY_AREA.generateObject(values["type"], values);
+}
+
+function debugSimSettings() {
+  var vals = Utils.extractNameValues( document.getElementById('debug_simulation'));
+  INIT_PLAY_AREA.update_delay = vals["t"];
 }
 
 function debugGenerateRandom() {
