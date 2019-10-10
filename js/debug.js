@@ -3,6 +3,14 @@ function showDebug() {
   x.style.display = "block";
 }
 
+function debugStop() {
+  INIT_PLAY_AREA.stop();
+}
+
+function debugStart() {
+  INIT_PLAY_AREA.start();
+}
+
 function hideDebug() {
   var x = document.getElementById('debug_console');
   x.style.display = "none";
