@@ -41,6 +41,9 @@ class BaseObject {
   eventCollisionWall(site="UNKNOWN") {
     if (LOGGING) { console.log(site); }
   }
+  eventOOB(site="UNKNOWN") {
+    if (LOGGING) { console.log(site); }
+  }
   eventCollisionObject(Obj) {
     if (LOGGING) { console.log(Obj); }
   }

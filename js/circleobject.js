@@ -28,29 +28,42 @@ class CircleObject extends BaseObject {
     if ( (this.pos_x-this.radius) <= 0) {
       if (this.vector.x > 0) {
         // means we hit the wall, BUT we are moving away from it, means we are in it
-        this.pos_x = this.radius * 2;
-        console.log("stuck west");
+        this.pos_x = this.radius; // a radius between center and wall
+        this.eventOOB("west");
       }
       this.eventCollisionWall("west");
       this.vector.x = (this.vector.x * -1);
     }
+
     // wall collision | east
     if ( (this.pos_x+this.radius) >= this.Area.HTMLObject.offsetWidth) {
+      if (this.vector.y < 0) {
+        // means we hit the wall, BUT we are moving away from it, means we are in it
+        this.pos_x = this.Area.HTMLObject.offsetWidth - this.radius; // a radius between center and wall
+        this.eventOOB("east");
+      }
       this.eventCollisionWall("east");
       this.vector.x = (this.vector.x * -1);
     }
+
     // wall collision | north
     if ( (this.pos_y-this.radius) <= 0) {
       if (this.vector.y > 0) {
         // means we hit the wall, BUT we are moving away from it, means we are in it
-        this.pos_y = this.radius * 2;
-        console.log("stuck north");
+        this.pos_y = this.radius; // a radius between center and wall
+        this.eventOOB("north");
       }
       this.eventCollisionWall("north");
       this.vector.y = (this.vector.y * -1);
     }
+
     // wall collision | south
     if ( (this.pos_y+this.radius) >= this.Area.HTMLObject.offsetHeight) {
+      if (this.vector.y < 0) {
+        // means we hit the wall, BUT we are moving away from it, means we are in it
+        this.pos_x = this.Area.HTMLObject.offsetHeight - this.radius; // a radius between center and wall
+        this.eventOOB("south");
+      }
       this.eventCollisionWall("south");
       this.vector.y = (this.vector.y * -1);
     }
