@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <div id="debug_console" style="display: block;">
+    <div id="debug_console" style="display: none;">
 
       <form class="debug box" action="javascript:void(0)" onsubmit="alert('now')" method="post" style="display: inline-grid;">
         <span>Generate Object</span>
@@ -22,10 +22,14 @@
         <button type="submit">Generate random</button>
       </form>
 
+      <button type="button" id="debug_close" onclick="hideDebug()">X</button>
+
     </div>
 
     <div id="main_window"></div>
+    <button type="button" id="debug_open" onclick="showDebug()">X</button>
 
     <script src="js/master.js" charset="utf-8"></script>
+    <script src="js/debug.js" charset="utf-8"></script>
   </body>
 </html>
