@@ -12,10 +12,20 @@ class CircleObject extends BaseObject {
   }
 
   update() {
+    // make it smooth
+    this.HTMLObject.style.transitionProperty = "top,left";
+    this.HTMLObject.style.transitionTimingFunction = "linear";
+    this.HTMLObject.style.transitionDuration = this.Area.update_delay + "ms";
+
+    // move object to next pos based on vector
+    this.pos_x = this.pos_x + this.vector.x;
+    this.pos_y = this.pos_y + this.vector.y;
+
+    // wall collision
+
     var m_x = this.Area.HTMLObject.offsetWidth / 2;
     var m_y = this.Area.HTMLObject.offsetHeight / 2;
-
-    // updateing display
+    // updating display
     this.HTMLObject.style.backgroundColor = this.color;
     this.HTMLObject.style.width = (this.radius * 2)+"px";
     this.HTMLObject.style.height = (this.radius * 2)+"px";
