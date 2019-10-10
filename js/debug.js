@@ -23,8 +23,8 @@ function debugGenerateRandom() {
     "type": "circle",
     "v": Math.floor(Math.random() * 15),
     "vector": {
-      "x": Math.floor(Math.random() * 20),
-      "y": Math.floor(Math.random() * 20)
+      "x": Math.floor(Math.random() * 20)-10,
+      "y": Math.floor(Math.random() * 20)-10
     },
     "x": Math.floor(Math.random() * 600) - 300,
     "y": Math.floor(Math.random() * 600) - 300

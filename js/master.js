@@ -1,6 +1,7 @@
+var LOGGING = false;
 var INIT_PLAY_AREA = null;
 document.addEventListener("DOMContentLoaded", function(event) {
-  INIT_PLAY_AREA = new PlayArea({"area_id":"main_area"});
+  INIT_PLAY_AREA = new PlayArea({"area_id":"main_area", "update_delay": 100});
   INIT_PLAY_AREA.start();
 });
 

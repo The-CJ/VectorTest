@@ -29,4 +29,18 @@ class BaseObject {
   update() {
     throw "can't update base class";
   }
+
+  //events
+  eventCreate() {
+    if (LOGGING) { console.log(this); }
+  }
+  eventUpdate() {
+    if (LOGGING) { console.log(this); }
+  }
+  eventCollisionWall(site="UNKNOWN") {
+    if (LOGGING) { console.log(site); }
+  }
+  eventCollisionObject(Obj) {
+    if (LOGGING) { console.log(Obj); }
+  }
 }
