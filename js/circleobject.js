@@ -1,7 +1,7 @@
 class CircleObject extends BaseObject {
-  constructor(x) {
+  constructor(x={}) {
     super(x);
-    this.radius = 0;
+    this.radius = x['r'] ? x['r'] : 0;
   }
 
   generateHTMLObject() {

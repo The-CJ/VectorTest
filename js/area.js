@@ -14,8 +14,9 @@ class PlayArea {
   }
 
   addObject(Obj) {
+    // link to a area and add to this are
+    Obj.Area = this;
     this.objects.push(Obj);
-    Obj.linkToHTMLArea(this);
     Obj.generateHTMLObject();
     return true;
   }
