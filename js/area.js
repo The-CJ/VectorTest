@@ -7,10 +7,9 @@ class PlayArea {
     this.objects = x["objects"] ? x["objects"] : [];
   }
 
-  generateObject(n) {
-    var Obj = Utils.getElementByName(n);
-    if (!Obj) { throw "can't find object: "+n; }
-    Obj = new Obj();
+  generateObject(name, values={}) {
+    var Obj = Utils.getObjectByName(name);
+    Obj = new Obj(values);
     return this.addObject(Obj);
   }
 

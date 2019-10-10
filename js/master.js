@@ -10,6 +10,7 @@ var Utils = new (class {
   getObjectByName(name) {
     if (name == "circle") { return CircleObject; }
     // if (name == "rectangle") { return CircleObject; }
+    throw "can't find object: "+name;
   }
 
 })()
