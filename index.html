@@ -10,7 +10,7 @@
 
     <div id="debug_console" style="display: none;">
 
-      <form class="debug box" action="javascript:void(0)" onsubmit="alert('now')" method="post" style="display: inline-grid;">
+      <form id="debug_generate" class="debug box" action="javascript:void(0)" onsubmit="javascript:debugGenerate()" method="post" style="display: inline-grid;">
         <span>Generate Object</span>
         <table>
           <tr>
@@ -30,7 +30,7 @@
         </table>
 
         <button type="submit">Generate</button>
-        <button type="submit">Generate random</button>
+        <button type="button">Generate random</button>
       </form>
 
       <button type="button" id="debug_close" onclick="hideDebug()">X</button>

@@ -12,5 +12,13 @@ var Utils = new (class {
     // if (name == "rectangle") { return CircleObject; }
     throw "can't find object: "+name;
   }
+  extractNameValues(HTMLNode) {
+    var r = {};
+    var l = HTMLNode.querySelectorAll("[name]");
+    for (var ValueNode of l) {
+      r[ ValueNode.getAttribute("name") ] = ValueNode.value;
+    }
+    return r;
+  }
 
 })()
