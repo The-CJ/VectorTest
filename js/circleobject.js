@@ -1,6 +1,6 @@
 class CircleObject extends BaseObject {
-  constructor() {
-    super();
+  constructor(x) {
+    super(x);
     this.radius = 0;
   }
 }
