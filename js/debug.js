@@ -7,6 +7,10 @@ function debugStop() {
   INIT_PLAY_AREA.stop();
 }
 
+function debugSmooth() {
+  INIT_PLAY_AREA.smooth = INIT_PLAY_AREA.smooth ? false : true;
+}
+
 function debugStart() {
   INIT_PLAY_AREA.start();
 }
