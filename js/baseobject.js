@@ -6,7 +6,6 @@ class BaseObject {
     this.mass = x['m'] ? parseInt(x['m']) : 0;
     this.pos_x = x['x'] ? parseInt(x['x']) : 0;
     this.pos_y = x['y'] ? parseInt(x['y']) : 0;
-    this.velocity = x['v'] ? parseInt(x['v']) : 0;
     this.color = x["color"] ? x["color"] : "green";
     this.vector = this.getVector(x["vector"]);
   }

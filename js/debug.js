@@ -13,6 +13,7 @@ function debugGenerate() {
   var values = Utils.extractNameValues(ValueNode);
   INIT_PLAY_AREA.generateObject(values["type"], values);
 }
+
 function debugGenerateRandom() {
   var r = {
     "a": Math.floor(Math.random() * 200),

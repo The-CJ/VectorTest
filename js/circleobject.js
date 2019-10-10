@@ -15,6 +15,7 @@ class CircleObject extends BaseObject {
     var m_x = this.Area.HTMLObject.offsetWidth / 2;
     var m_y = this.Area.HTMLObject.offsetHeight / 2;
 
+    // updateing display
     this.HTMLObject.style.backgroundColor = this.color;
     this.HTMLObject.style.width = (this.radius * 2)+"px";
     this.HTMLObject.style.height = (this.radius * 2)+"px";

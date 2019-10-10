@@ -6,6 +6,9 @@ class PlayArea {
 
     this.objects = x["objects"] ? x["objects"] : [];
     this.update_delay = x["update_delay"] ? x["update_delay"] : 100;
+
+    this.running = false;
+
   }
 
   generateObject(name, values={}) {
@@ -21,4 +24,25 @@ class PlayArea {
     Obj.generateHTMLObject();
     return true;
   }
+
+  start() {
+    if (this.running) { throw "already runing"; }
+    this.running = true;
+    this.run();
+  }
+
+  stop() {
+    this.running = false;
+  }
+
+  async run() {
+    while (this.running) {
+      for (var Obj of this.objects) {
+        Obj.update();
+      }
+
+      await sleep(this.update_delay);
+    }
+  }
+
 }
