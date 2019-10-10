@@ -14,9 +14,11 @@ class CircleObject extends BaseObject {
 
   update() {
     // make it smooth
-    this.HTMLObject.style.transitionProperty = "top,left";
-    this.HTMLObject.style.transitionTimingFunction = "linear";
-    this.HTMLObject.style.transitionDuration = this.Area.update_delay + "ms";
+    if (this.Area.smooth) {
+      this.HTMLObject.style.transitionProperty = "top,left";
+      this.HTMLObject.style.transitionTimingFunction = "linear";
+      this.HTMLObject.style.transitionDuration = this.Area.update_delay + "ms";
+    }
 
     // move object to next pos based on vector
     this.pos_x = this.pos_x + this.vector.x;
@@ -24,6 +26,11 @@ class CircleObject extends BaseObject {
 
     // wall collision | west
     if ( (this.pos_x-this.radius) <= 0) {
+      if (this.vector.x > 0) {
+        // means we hit the wall, BUT we are moving away from it, means we are in it
+        this.pos_x = this.radius * 2;
+        console.log("stuck west");
+      }
       this.eventCollisionWall("west");
       this.vector.x = (this.vector.x * -1);
     }
@@ -32,9 +39,14 @@ class CircleObject extends BaseObject {
       this.eventCollisionWall("east");
       this.vector.x = (this.vector.x * -1);
     }
-    // wall collision | nouth
+    // wall collision | north
     if ( (this.pos_y-this.radius) <= 0) {
-      this.eventCollisionWall("nouth");
+      if (this.vector.y > 0) {
+        // means we hit the wall, BUT we are moving away from it, means we are in it
+        this.pos_y = this.radius * 2;
+        console.log("stuck north");
+      }
+      this.eventCollisionWall("north");
       this.vector.y = (this.vector.y * -1);
     }
     // wall collision | south

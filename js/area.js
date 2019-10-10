@@ -6,7 +6,7 @@ class PlayArea {
 
     this.objects = x["objects"] ? x["objects"] : [];
     this.update_delay = x["update_delay"] ? x["update_delay"] : 100;
-
+    this.smooth = x["smooth"] ? x["smooth"] : false;
     this.running = false;
 
   }

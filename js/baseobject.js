@@ -8,6 +8,7 @@ class BaseObject {
     this.pos_y = x['y'] ? parseInt(x['y']) : 0;
     this.color = x["color"] ? x["color"] : "green";
     this.vector = this.getVector(x["vector"]);
+    this.oob = {n:0, s:0, w:0, e:0};
   }
 
   getVector(vec) {
