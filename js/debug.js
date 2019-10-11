@@ -61,6 +61,19 @@ function debugGenerateRandom() {
 }
 
 // physics
+function debugGrav() {
+  var ValueNode = document.getElementById('debug_phy');
+  var values = Utils.extractNameValues(ValueNode);
+  var GvAB = new BaseObject().getVector(values["G"]);
+  INIT_PLAY_AREA.grav = GvAB;
+}
+
+function debugFriction() {
+  var ValueNode = document.getElementById('debug_phy');
+  var values = Utils.extractNameValues(ValueNode);
+  INIT_PLAY_AREA.friction = parseFloat(values["f"]);
+}
+
 function debugAddVector() {
   var vals = Utils.extractNameValues( document.getElementById('debug_phy'));
   var vAB = new BaseObject().getVector(vals["addVector"]);
