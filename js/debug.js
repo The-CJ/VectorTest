@@ -16,6 +16,10 @@ function debugSmooth() {
   }
 }
 
+function debugLog() {
+  LOGGING = LOGGING ? false : true;
+}
+
 function debugStart() {
   INIT_PLAY_AREA.start();
 }

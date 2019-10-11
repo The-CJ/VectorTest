@@ -78,8 +78,11 @@ class CircleObject extends BaseObject {
     this.eventUpdateEnd();
   }
 
+  eventUpdateStart() {
+
+  }
   eventUpdateEnd() {
     // gravitation ?
-    // IDEA: this.vector.y = this.vector.y + 9.81;
+    // this.vector.y = this.vector.y + 9.81;
   }
 }

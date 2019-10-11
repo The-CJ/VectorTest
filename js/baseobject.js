@@ -42,10 +42,10 @@ class BaseObject {
     if (LOGGING) { console.log(this); }
   }
   eventCollisionWall(site="UNKNOWN") {
-    if (LOGGING) { console.log(site); }
+    if (LOGGING) { console.log("wall: " + site); }
   }
   eventOOB(site="UNKNOWN") {
-    if (LOGGING) { console.log(site); }
+    if (LOGGING) { console.log("oob: " + site); }
   }
   eventCollisionObject(Obj) {
     if (LOGGING) { console.log(Obj); }
