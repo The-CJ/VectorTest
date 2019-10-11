@@ -40,6 +40,10 @@ class BaseObject {
     throw "can't generate object for base class";
   }
 
+  testCollision(o) {
+    throw "can't test for collision on base class";
+  }
+
   reset() {
     this.pos_x = this.reset_point.x;
     this.pos_y = this.reset_point.y;

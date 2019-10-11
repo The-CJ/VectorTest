@@ -77,6 +77,15 @@ class CircleObject extends BaseObject {
       this.vector.y = (this.vector.y * -1);
     }
 
+    // test collision with other objects
+    for (var Ob of this.Area.objects) {
+      if (Ob === this) { continue; } // ignore self
+      var collide = this.testCollision(Ob);
+      if (collide) {
+        this.eventCollisionObject(Ob);
+      }
+    }
+
     // updating display
     this.HTMLObject.style.backgroundColor = this.color;
     this.HTMLObject.style.width = (this.radius * 2)+"px";
@@ -96,7 +105,18 @@ class CircleObject extends BaseObject {
     this.vector.x *= f;
     this.vector.y *= f;
 
-
     this.eventUpdateEnd();
+  }
+
+  testCollision(Obj) {
+    var a = Math.abs( this.pos_y - Obj.pos_y );
+    var b = Math.abs( this.pos_x - Obj.pos_x );
+    var hyp = Math.sqrt( (Math.pow(a, 2) + Math.pow(b, 2)) );
+    // hyp is the distance between both inner points, if this distance is smaller than both radius, they collide
+    if (hyp < (this.radius + Obj.radius)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
