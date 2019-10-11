@@ -15,25 +15,23 @@ class BaseObject {
   }
 
   getVector(vec) {
-    if (!vec) { return {x:0,y:0}; }
+    if (!vec) { return new Vector(); }
     if (typeof vec == "object") { return vec; }
     if (typeof vec == "string") {
       var vXY = vec.split(";");
       var x = vXY[0];
       var y = vXY[1];
       if (!x || !y) { throw "can't generate vector from string"; }
-      return {"x":parseFloat(x), "y":parseFloat(y)}
+      return new Vector(parseFloat(x), parseFloat(y));
     }
   }
 
   addVector(vAB) {
-    this.vector.x += vAB.x;
-    this.vector.y += vAB.y;
+    this.vector.add(vAB);
   }
 
   setVector(vAB) {
-    this.vector.x = vAB.x;
-    this.vector.y = vAB.y;
+    this.vector.set(vAB);
   }
 
   generateHTMLObject() {

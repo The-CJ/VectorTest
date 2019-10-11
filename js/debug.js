@@ -43,6 +43,8 @@ function debugSimSettings() {
 }
 
 function debugGenerateRandom() {
+  var vA = Math.floor(Math.random() * 20)-10;
+  var vB = Math.floor(Math.random() * 20)-10;
   var r = {
     "a": Math.floor(Math.random() * 200),
     "b": Math.floor(Math.random() * 200),
@@ -50,10 +52,7 @@ function debugGenerateRandom() {
     "r": Math.floor(Math.random() * 99) + 1,
     "type": "circle",
     "v": Math.floor(Math.random() * 15),
-    "vector": {
-      "x": Math.floor(Math.random() * 20)-10,
-      "y": Math.floor(Math.random() * 20)-10
-    },
+    "vector": new Vector(vA, vB),
     "x": Math.floor(Math.random() * 600),
     "y": Math.floor(Math.random() * 600)
   };
