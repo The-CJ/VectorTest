@@ -9,6 +9,7 @@ class BaseObject {
     this.color = x["color"] ? x["color"] : "green";
     this.vector = this.getVector(x["vector"]);
     this.oob = {n:0, s:0, w:0, e:0};
+    this.reset_point = {x:this.pos_x, y:this.pos_y};
   }
 
   getVector(vec) {
@@ -25,6 +26,12 @@ class BaseObject {
 
   generateHTMLObject() {
     throw "can't generate object for base class";
+  }
+
+  reset() {
+    this.pos_x = this.reset_point.x;
+    this.pos_y = this.reset_point.y;
+    this.oob = {n:0, s:0, w:0, e:0};
   }
 
   update() {
