@@ -27,7 +27,7 @@
           <tr><td>r: </td><td><input type="number" name="r" min="1" placeholder="radius - Default: 1"/></td></tr>
           <tr><td>a: </td><td><input type="number" name="a" min="1" placeholder="length a - Default: 1"/></td></tr>
           <tr><td>b: </td><td><input type="number" name="b" min="1" placeholder="length b - Default: 1"/></td></tr>
-          <tr><td><i>AB</i>: </td><td><input type="text" name="vector" placeholder="vector - Default: 0;0"/></td></tr>
+          <tr><td><i>AB</i>: </td><td><input type="text" name="vector" placeholder="vector - Default: 0;0 (X;Y)"/></td></tr>
         </table>
 
         <button type="submit">Generate</button>
@@ -44,6 +44,24 @@
           <tr><td>T: </td><td><input type="number" name="t" min="0" value="100" placeholder="time mult. - Default: 100"/></td></tr>
         </table>
         <button type="submit">Update</button>
+      </form>
+
+      <form id="debug_phy" class="debug box" action="javascript:void(0)" onsubmit="javascript:debugPhySettings()" method="post" style="display: inline-grid;">
+        <span>Physics Settings</span>
+        <table>
+          <tr><td>G: </td><td><input type="number" name="G" min="0" placeholder="grav. - Default: 0;0 (X;Y)"/></td></tr>
+          <tr><td>f: </td><td><input type="number" name="f" min="0" placeholder="friction - Default: 0 "/></td></tr>
+        </table>
+        <button type="submit">Update</button>
+        <br>
+        <input type="text" name="addVector" placeholder="Vector: 0;0 (X;Y)"/>
+        <button type="button">Add Vector to all</button>
+        <br>
+        <input type="text" name="setVector" placeholder="Vector: 0;0 (X;Y)"/>
+        <button type="button">Set all to Vector</button>
+        <br>
+        <input type="number" name="setMass" placeholder="mass - Default: 0 "/>
+        <button type="button">Set all to mass</button>
 
       </form>
 
