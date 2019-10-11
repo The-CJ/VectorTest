@@ -24,6 +24,16 @@ class BaseObject {
     }
   }
 
+  addVector(vAB) {
+    this.vector.x += vAB.x;
+    this.vector.y += vAB.y;
+  }
+
+  setVector(vAB) {
+    this.vector.x = vAB.x;
+    this.vector.y = vAB.y;
+  }
+
   generateHTMLObject() {
     throw "can't generate object for base class";
   }

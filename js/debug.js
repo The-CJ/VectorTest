@@ -3,6 +3,12 @@ function showDebug() {
   x.style.display = "block";
 }
 
+function hideDebug() {
+  var x = document.getElementById('debug_console');
+  x.style.display = "none";
+}
+
+// sim settings
 function debugStop() {
   INIT_PLAY_AREA.stop();
 }
@@ -24,11 +30,7 @@ function debugStart() {
   INIT_PLAY_AREA.start();
 }
 
-function hideDebug() {
-  var x = document.getElementById('debug_console');
-  x.style.display = "none";
-}
-
+// generate
 function debugGenerate() {
   var ValueNode = document.getElementById('debug_generate');
   var values = Utils.extractNameValues(ValueNode);
@@ -56,4 +58,21 @@ function debugGenerateRandom() {
     "y": Math.floor(Math.random() * 600)
   };
   INIT_PLAY_AREA.generateObject(r["type"], r);
+}
+
+// physics
+function debugAddVector() {
+  var vals = Utils.extractNameValues( document.getElementById('debug_phy'));
+  var vAB = new BaseObject().getVector(vals["addVector"]);
+  for (var Obj of INIT_PLAY_AREA.objects) {
+    Obj.addVector(vAB);
+  }
+}
+
+function debugSetVector() {
+  var vals = Utils.extractNameValues( document.getElementById('debug_phy'));
+  var vAB = new BaseObject().getVector(vals["setVector"]);
+  for (var Obj of INIT_PLAY_AREA.objects) {
+    Obj.setVector(vAB);
+  }
 }

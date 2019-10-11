@@ -46,24 +46,32 @@
         <button type="submit">Update</button>
       </form>
 
-      <form id="debug_phy" class="debug box" action="javascript:void(0)" onsubmit="javascript:debugPhySettings()" method="post" style="display: inline-grid;">
+      <div id="debug_phy" class="debug box" style="display: inline-grid;">
         <span>Physics Settings</span>
-        <table>
-          <tr><td>G: </td><td><input type="number" name="G" min="0" placeholder="grav. - Default: 0;0 (X;Y)"/></td></tr>
-          <tr><td>f: </td><td><input type="number" name="f" min="0" placeholder="friction - Default: 0 "/></td></tr>
-        </table>
-        <button type="submit">Update</button>
+        <form action="javascript:void(0)" onsubmit="javascript:debugPhySettings()" method="post" style="display: inline-grid;">
+          <table>
+            <tr><td>G: </td><td><input type="number" name="G" min="0" placeholder="grav. - Default: 0;0 (X;Y)"/></td></tr>
+            <tr><td>f: </td><td><input type="number" name="f" min="0" placeholder="friction - Default: 0 "/></td></tr>
+          </table>
+          <button type="submit">Update</button>
+        </form>
         <br>
-        <input type="text" name="addVector" placeholder="Vector: 0;0 (X;Y)"/>
-        <button type="button">Add Vector to all</button>
+        <form action="javascript:void(0)" onsubmit="javascript:debugAddVector()" method="post" style="display: inline-grid;">
+          <input type="text" name="addVector" placeholder="Vector: 0;0 (X;Y)"/>
+          <button type="submit">Add Impuls to all</button>
+        </form>
         <br>
-        <input type="text" name="setVector" placeholder="Vector: 0;0 (X;Y)"/>
-        <button type="button">Set all to Vector</button>
+        <form action="javascript:void(0)" onsubmit="javascript:debugSetVector()" method="post" style="display: inline-grid;">
+          <input type="text" name="setVector" placeholder="Vector: 0;0 (X;Y)"/>
+          <button type="submit">Set Vector on all</button>
+        </form>
         <br>
-        <input type="number" name="setMass" placeholder="mass - Default: 0 "/>
-        <button type="button">Set all to mass</button>
+        <form action="javascript:void(0)" onsubmit="javascript:debugSetMass()" method="post" style="display: inline-grid;">
+          <input type="number" name="setMass" placeholder="mass - Default: 0 "/>
+          <button type="submit">Set all to mass</button>
+        </form>
 
-      </form>
+      </div>
 
       <button type="button" id="debug_close" onclick="hideDebug()">X</button>
 
