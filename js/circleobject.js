@@ -27,9 +27,9 @@ class CircleObject extends BaseObject {
 
     // wall collision | west
     if ( (this.pos_x-this.radius) <= 0) {
+      this.pos_x = this.radius; // a radius between center and wall
       if (this.vector.x > 0) {
         // means we hit the wall, BUT we are moving away from it, means we are in it
-        this.pos_x = this.radius; // a radius between center and wall
         this.eventOOB("west");
       }
       this.eventCollisionWall("west");
@@ -38,9 +38,9 @@ class CircleObject extends BaseObject {
 
     // wall collision | east
     if ( (this.pos_x+this.radius) >= this.Area.HTMLObject.offsetWidth) {
+      this.pos_x = this.Area.HTMLObject.offsetWidth - this.radius; // a radius between center and wall
       if (this.vector.x < 0) {
         // means we hit the wall, BUT we are moving away from it, means we are in it
-        this.pos_x = this.Area.HTMLObject.offsetWidth - this.radius; // a radius between center and wall
         this.eventOOB("east");
       }
       this.eventCollisionWall("east");
@@ -49,9 +49,9 @@ class CircleObject extends BaseObject {
 
     // wall collision | north
     if ( (this.pos_y-this.radius) <= 0) {
+      this.pos_y = this.radius; // a radius between center and wall
       if (this.vector.y > 0) {
         // means we hit the wall, BUT we are moving away from it, means we are in it
-        this.pos_y = this.radius; // a radius between center and wall
         this.eventOOB("north");
       }
       this.eventCollisionWall("north");
@@ -60,9 +60,9 @@ class CircleObject extends BaseObject {
 
     // wall collision | south
     if ( (this.pos_y+this.radius) >= this.Area.HTMLObject.offsetHeight) {
+      this.pos_y = this.Area.HTMLObject.offsetHeight - this.radius; // a radius between center and wall
       if (this.vector.y < 0) {
         // means we hit the wall, BUT we are moving away from it, means we are in it
-        this.pos_y = this.Area.HTMLObject.offsetHeight - this.radius; // a radius between center and wall
         this.eventOOB("south");
       }
       this.eventCollisionWall("south");
