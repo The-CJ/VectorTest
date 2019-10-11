@@ -83,6 +83,7 @@ class CircleObject extends BaseObject {
       var collide = this.testCollision(Ob);
       if (collide) {
         this.eventCollisionObject(Ob);
+        // TODO change by collision
       }
     }
 
