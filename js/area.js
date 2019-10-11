@@ -7,8 +7,9 @@ class PlayArea {
     this.objects = x["objects"] ? x["objects"] : [];
     this.update_delay = x["update_delay"] ? x["update_delay"] : 100;
     this.smooth = x["smooth"] ? x["smooth"] : false;
+    this.grav = x["grav"] ? x["grav"] : {x:0, y:0};
+    this.friction = x["friction"] ? x["friction"] : 1;
     this.running = false;
-
   }
 
   generateObject(name, values={}) {
@@ -26,7 +27,7 @@ class PlayArea {
   }
 
   start() {
-    if (this.running) { throw "already runing"; }
+    if (this.running) { throw "already running"; }
     this.running = true;
     this.run();
   }

@@ -83,14 +83,20 @@ class CircleObject extends BaseObject {
     this.HTMLObject.style.height = (this.radius * 2)+"px";
     this.HTMLObject.style.left = (this.pos_x - this.radius)+"px";
     this.HTMLObject.style.top = (this.pos_y - this.radius)+"px";
+
+    // after all movement is complete, set vectors based on grav and friction for next iteration
+    var G = this.grav ? this.grav : this.Area.grav;
+    var f = this.friction ? this.friction : this.Area.friction;
+
+    // G
+    this.vector.x += G.x;
+    this.vector.y += G.y;
+
+    // f
+    this.vector.x *= f;
+    this.vector.y *= f;
+
+
     this.eventUpdateEnd();
-  }
-
-  eventUpdateStart() {
-
-  }
-  eventUpdateEnd() {
-    // gravitation ?
-    // this.vector.y = this.vector.y + 9.81;
   }
 }
