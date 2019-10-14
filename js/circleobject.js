@@ -90,8 +90,8 @@ class CircleObject extends BaseObject {
         this.pos_x -= overlap * (this.pos_x - Ob.pos_x) / collide.hyp;
         this.pos_y -= overlap * (this.pos_y - Ob.pos_y) / collide.hyp;
 
-        Ob.pos_y -= overlap * (this.pos_y - Ob.pos_y) / collide.hyp;
-        Ob.pos_y -= overlap * (this.pos_y - Ob.pos_y) / collide.hyp;
+        Ob.pos_y += overlap * (this.pos_y - Ob.pos_y) / collide.hyp;
+        Ob.pos_y += overlap * (this.pos_y - Ob.pos_y) / collide.hyp;
 
         // pushed back? good now physics
         // get normalized vectors and generate tangent as well
