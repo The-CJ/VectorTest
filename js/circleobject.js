@@ -81,9 +81,29 @@ class CircleObject extends BaseObject {
     for (var Ob of this.Area.objects) {
       if (Ob === this) { continue; } // ignore self
       var collide = this.testCollision(Ob);
-      if (collide) {
-        this.eventCollisionObject(Ob);
-        // TODO change by collision
+      if (collide != false) {
+        this.eventCollisionObject(Ob, collide);
+
+        // get normalized vectors and generate tangent as well
+        var nx = (Ob.pos_x - this.pos_x) / collide.hyp;
+        var ny = (Ob.pos_y - this.pos_y) / collide.hyp;
+
+        var normalVector = new Vector(nx, ny);
+        var tangentVector = new Vector(-ny, nx);
+
+        // get dot product
+        var dpTan1 = (this.vector.x * tangentVector.x) + (this.vector.y * tangentVector.y);
+        var dpTan2 = (Ob.vector.x * tangentVector.x) + (Ob.vector.y * tangentVector.y);
+
+        
+
+        // set new vector based by tangent times dot product
+        this.vector.x = (tangentVector.x * dpTan1);
+        this.vector.y = (tangentVector.y * dpTan1);
+
+        // same but for other part
+        Ob.vector.x = (tangentVector.x * dpTan2);
+        Ob.vector.y = (tangentVector.y * dpTan2);
       }
     }
 
@@ -115,7 +135,7 @@ class CircleObject extends BaseObject {
     var hyp = Math.sqrt( (Math.pow(a, 2) + Math.pow(b, 2)) );
     // hyp is the distance between both inner points, if this distance is smaller than both radius, they collide
     if (hyp < (this.radius + Obj.radius)) {
-      return true;
+      return {"hyp":hyp};
     } else {
       return false;
     }

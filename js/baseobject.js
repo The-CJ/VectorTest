@@ -68,7 +68,7 @@ class BaseObject {
   eventOOB(site="UNKNOWN") {
     if (LOGGING) { console.log("oob: " + site); }
   }
-  eventCollisionObject(Obj) {
-    if (LOGGING) { console.log(Obj); }
+  eventCollisionObject(Obj, data) {
+    if (LOGGING) { console.log(Obj); console.log(data); }
   }
 }
