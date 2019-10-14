@@ -48,7 +48,7 @@ function debugGenerateRandom() {
   var r = {
     "a": Math.floor(Math.random() * 200),
     "b": Math.floor(Math.random() * 200),
-    "m": Math.floor(Math.random() * 50),
+    // "m": Math.floor(Math.random() * 50),
     "r": Math.floor(Math.random() * 99) + 1,
     "type": "circle",
     "v": Math.floor(Math.random() * 15),

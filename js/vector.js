@@ -14,6 +14,11 @@ class Vector {
     this.y = vAB.y;
   }
 
+  mult(vAB) {
+    this.x = this.x * vAB.x;
+    this.y = this.y * vAB.y;
+  }
+
   get velocity() {
     var vX = Math.abs(this.x);
     var vY = Math.abs(this.y);

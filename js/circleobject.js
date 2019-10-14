@@ -2,6 +2,7 @@ class CircleObject extends BaseObject {
   constructor(x={}) {
     super(x);
     this.radius = x['r'] ? parseInt(x['r']) : 1;
+    this.mass = this.mass ? this.mass : this.radius * 5;
   }
 
   generateHTMLObject() {
@@ -91,19 +92,25 @@ class CircleObject extends BaseObject {
         var normalVector = new Vector(nx, ny);
         var tangentVector = new Vector(-ny, nx);
 
-        // get dot product
-        var dpTan1 = (this.vector.x * tangentVector.x) + (this.vector.y * tangentVector.y);
-        var dpTan2 = (Ob.vector.x * tangentVector.x) + (Ob.vector.y * tangentVector.y);
+        // get scalar dot product from tangent
+        var dpTanThis = (this.vector.x * tangentVector.x) + (this.vector.y * tangentVector.y);
+        var dpTanOb = (Ob.vector.x * tangentVector.x) + (Ob.vector.y * tangentVector.y);
 
-        
+        // get scalar dot product from normal
+        var dpNormThis = (this.vector.x * normalVector.x) + (this.vector.y * normalVector.y);
+        var dpNormOb = (Ob.vector.x * normalVector.x) + (Ob.vector.y * normalVector.y);
 
-        // set new vector based by tangent times dot product
-        this.vector.x = (tangentVector.x * dpTan1);
-        this.vector.y = (tangentVector.y * dpTan1);
+        // get scalar convertion of momentum
+        var comThis = ( dpNormOb * (this.mass - Ob.mass) + 2 * Ob.mass * dpNormOb ) / (this.mass + Ob.mass);
+        var comOb = ( dpNormThis * (Ob.mass - this.mass) + 2 * this.mass * dpNormThis ) / (this.mass + Ob.mass);
+
+        // set new vector based by tangent times dot product + the normal speed convertion
+        this.vector.x = (tangentVector.x * dpTanThis) + (normalVector.x * comThis);
+        this.vector.y = (tangentVector.y * dpTanThis) + (normalVector.y * comThis);
 
         // same but for other part
-        Ob.vector.x = (tangentVector.x * dpTan2);
-        Ob.vector.y = (tangentVector.y * dpTan2);
+        Ob.vector.x = (tangentVector.x * dpTanOb) + (normalVector.x * comOb);
+        Ob.vector.y = (tangentVector.y * dpTanOb) + (normalVector.y * comOb);
       }
     }
 
