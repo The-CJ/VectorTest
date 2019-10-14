@@ -39,7 +39,7 @@ function debugGenerate() {
 
 function debugSimSettings() {
   var vals = Utils.extractNameValues( document.getElementById('debug_simulation'));
-  INIT_PLAY_AREA.update_delay = vals["t"];
+  INIT_PLAY_AREA.update_delay = parseInt(vals["t"]);
 }
 
 function debugGenerateRandom() {
