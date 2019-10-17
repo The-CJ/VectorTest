@@ -8,7 +8,7 @@ class BaseObject {
     this.pos_y = x['y'] ? parseInt(x['y']) : 0;
     this.color = x["color"] ? x["color"] : "green";
     this.vector = this.getVector(x["vector"]);
-    this.max_vector = x["max_vector"] ? this.getVector(x["max_vector"]) : new Vector(50, 50);
+    this.max_vector = x["max_vector"] ? x["max_vector"] : 30;
     this.oob = {n:0, s:0, w:0, e:0};
     this.reset_point = {x:this.pos_x, y:this.pos_y};
     this.grav = null; // every object can have individual grav, but if null -> use Area Grav
