@@ -88,3 +88,11 @@ function debugSetVector() {
     Obj.setVector(vAB);
   }
 }
+
+function debugMaxVelocity() {
+  var vals = Utils.extractNameValues( document.getElementById('debug_phy'));
+  vals = parseInt(vals["setVelocity"]);
+  for (var Obj of INIT_PLAY_AREA.objects) {
+    Obj.max_vector = vals;
+  }
+}
