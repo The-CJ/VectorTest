@@ -122,6 +122,10 @@ class CircleObject extends BaseObject {
       }
     }
 
+    // max velocity changes
+    if (this.vector.x > this.max_vector.x) { this.vector.x = this.max_vector.x; }
+    if (this.vector.y > this.max_vector.y) { this.vector.y = this.max_vector.y; }
+
     // updating display
     this.HTMLObject.style.backgroundColor = this.color;
     this.HTMLObject.style.width = (this.radius * 2)+"px";
