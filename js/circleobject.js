@@ -138,6 +138,10 @@ class CircleObject extends BaseObject {
     this.HTMLObject.style.height = (this.radius * 2)+"px";
     this.HTMLObject.style.left = (this.pos_x - this.radius)+"px";
     this.HTMLObject.style.top = (this.pos_y - this.radius)+"px";
+    var thisO = this;
+    if (this.draggable) {
+      this.HTMLObject.onmousedown = function () {thisO.dragStart()};
+    }
 
     // after all movement is complete, set vectors based on grav and friction for next iteration
     var G = this.grav ? this.grav : this.Area.grav;
@@ -165,4 +169,25 @@ class CircleObject extends BaseObject {
       return false;
     }
   }
+
+  dragStart(e) {
+    e = e || window.event;
+    e.preventDefault();
+    var thisO = this;
+    document.onmouseup = function () { thisO.dragStop(); }
+    document.onmousemove = function () { thisO.dragMove(); }
+  }
+
+  dragMove(e) {
+    e = e || window.event;
+    e.preventDefault();
+    this.pos_x = e.clientX - this.radius;
+    this.pos_y = e.clientY - this.radius;
+  }
+
+  dragStop() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+
 }
