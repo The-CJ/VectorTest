@@ -3,6 +3,7 @@ var INIT_PLAY_AREA = null;
 document.addEventListener("DOMContentLoaded", function(event) {
   INIT_PLAY_AREA = new PlayArea({"area_id":"main_area"});
   INIT_PLAY_AREA.start();
+  INIT_PLAY_AREA.load("pool");
 });
 
 function sleep(ms) {

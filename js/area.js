@@ -46,4 +46,24 @@ class PlayArea {
     }
   }
 
+  load(save_name) {
+
+    // clear first
+    this.objects = [];
+    this.HTMLObject.innerHTML = "";
+
+    var presets = new SaveGame().get(save_name);
+    if (presets["update_delay"] !== undefined) { this.update_delay = presets["update_delay"]; }
+    if (presets["smooth"] !== undefined) { this.smooth = presets["smooth"]; }
+    if (presets["grav"] !== undefined) { this.grav = presets["grav"]; }
+    if (presets["friction"] !== undefined) { this.friction = presets["friction"]; }
+    if (presets["objects"] !== undefined) {
+      for (var newOb of presets["objects"]) {
+        this.addObject(newOb);
+      }
+     }
+    console.log(presets);
+
+  }
+
 }
