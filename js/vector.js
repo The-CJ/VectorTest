@@ -14,9 +14,9 @@ class Vector {
     this.y = vAB.y;
   }
 
-  mult(vAB) {
-    this.x = this.x * vAB.x;
-    this.y = this.y * vAB.y;
+  mult(v) {
+    this.x = this.x * v;
+    this.y = this.y * v;
   }
 
   get velocity() {

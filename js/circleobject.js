@@ -142,6 +142,9 @@ class CircleObject extends BaseObject {
     if (this.draggable) {
       this.HTMLObject.onmousedown = function () {thisO.dragStart()};
     }
+    else if (this.snappable) {
+      this.HTMLObject.onmousedown = function () {thisO.snapStart()};
+    }
 
     // after all movement is complete, set vectors based on grav and friction for next iteration
     var G = this.grav ? this.grav : this.Area.grav;
@@ -170,6 +173,7 @@ class CircleObject extends BaseObject {
     }
   }
 
+  // drag
   dragStart(e) {
     e = e || window.event;
     e.preventDefault();
@@ -188,6 +192,30 @@ class CircleObject extends BaseObject {
   dragStop() {
     document.onmouseup = null;
     document.onmousemove = null;
+  }
+
+  // snap
+  snapStart(e) {
+    e = e || window.event;
+    e.preventDefault();
+    this.ssx = e.clientX - this.radius;
+    this.ssy = e.clientY - this.radius;
+    var thisO = this;
+    document.onmouseup = function () { thisO.snapCalc(); }
+  }
+
+  snapCalc(e) {
+    e = e || window.event;
+    e.preventDefault();
+    var cX = e.clientX - this.radius;
+    var cY = e.clientY - this.radius;
+
+    var Impus = new Vector( Math.abs(this.ssx - cX), Math.abs(this.ssy - cY) );
+    Impus.mult(-1);
+    this.vector.add(Impus);
+
+    delete this.ssx;
+    delete this.ssy;
   }
 
 }
