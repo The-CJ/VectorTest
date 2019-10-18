@@ -2,7 +2,7 @@ class CircleObject extends BaseObject {
   constructor(x={}) {
     super(x);
     this.radius = x['r'] ? parseInt(x['r']) : 1;
-    this.mass = this.mass ? this.mass : this.radius * 1.5;
+    this.mass = this.mass ? this.mass : (Math.PI * (this.radius**2));
   }
 
   generateHTMLObject() {
@@ -230,8 +230,6 @@ class CircleObject extends BaseObject {
     Impus.mult(-0.25);
     this.vector.add(Impus);
 
-    delete this.ssx;
-    delete this.ssy;
     document.onmouseup = null;
     document.onmousemove = null;
     this.border = this.color;

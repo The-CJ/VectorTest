@@ -15,7 +15,7 @@ var Utils = new (class {
   }
   getObjectByName(name) {
     if (name == "circle") { return CircleObject; }
-    // if (name == "rectangle") { return CircleObject; }
+    if (name == "rectangle") { return RactangleObject; }
     throw "can't find object: "+name;
   }
   extractNameValues(HTMLNode) {
