@@ -46,7 +46,7 @@ class SaveGame {
       "update_delay": 10,
       "smooth": false,
       "grav": new Vector(0, 0),
-      "friction": 0.999,
+      "friction": 0.99,
       "objects": [
         new CircleObject({r:br, x:w/4, y:h/2, color:"white", snappable: true}),
 
