@@ -32,6 +32,8 @@ class CircleObject extends BaseObject {
     for (var Ob of this.Area.objects) {
       if (Ob === this) { continue; } // ignore self
       var collide = false;
+
+      // circle
       if (Ob instanceof CircleObject) {
         collide = this.testCollisionWithCircleObject(Ob);
         if (collide != false) {
