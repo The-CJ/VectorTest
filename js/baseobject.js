@@ -7,6 +7,7 @@ class BaseObject {
     this.pos_x = x['x'] ? parseInt(x['x']) : 0;
     this.pos_y = x['y'] ? parseInt(x['y']) : 0;
     this.color = x["color"] ? x["color"] : "green";
+    this.border = x["border"] ? x["border"] : "green";
     this.vector = this.getVector(x["vector"]);
     this.max_vector = x["max_vector"] ? x["max_vector"] : 30;
     this.oob = {n:0, s:0, w:0, e:0};

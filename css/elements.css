@@ -1,2 +1,7 @@
 .object { position: absolute; }
-.object.circle { border-radius: 50%; }
+.object.circle {
+  box-sizing: border-box;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 50%;
+}

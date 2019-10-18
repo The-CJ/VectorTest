@@ -54,6 +54,7 @@ class CircleObject extends BaseObject {
     }
 
     // updating display
+    this.HTMLObject.style.borderColor = this.border;
     this.HTMLObject.style.backgroundColor = this.color;
     this.HTMLObject.style.width = (this.radius * 2)+"px";
     this.HTMLObject.style.height = (this.radius * 2)+"px";
@@ -63,8 +64,8 @@ class CircleObject extends BaseObject {
     if (this.draggable) {
       this.HTMLObject.onmousedown = function () {thisO.dragStart()};
     }
-    else if (this.snappable) {
-      this.HTMLObject.onmousedown = function () {thisO.snapStart()};
+    if (this.snappable) {
+      this.HTMLObject.ondblclick = function () {thisO.snapStart()};
     }
 
     // after all movement is complete, set vectors based on grav and friction for next iteration
@@ -214,10 +215,9 @@ class CircleObject extends BaseObject {
   snapStart(e) {
     e = e || window.event;
     e.preventDefault();
-    this.ssx = e.clientX - this.radius;
-    this.ssy = e.clientY - this.radius;
     var thisO = this;
     document.onmouseup = function () { thisO.snapCalc(); }
+    this.border = "red";
   }
 
   snapCalc(e) {
@@ -226,7 +226,7 @@ class CircleObject extends BaseObject {
     var cX = e.clientX - this.radius;
     var cY = e.clientY - this.radius;
 
-    var Impus = new Vector( (cX-this.ssx), (cY-this.ssy) );
+    var Impus = new Vector( (cX-this.pos_x), (cY-this.pos_y) );
     Impus.mult(-0.25);
     this.vector.add(Impus);
 
@@ -234,6 +234,7 @@ class CircleObject extends BaseObject {
     delete this.ssy;
     document.onmouseup = null;
     document.onmousemove = null;
+    this.border = this.color;
   }
 
 }
