@@ -210,8 +210,8 @@ class CircleObject extends BaseObject {
     var cX = e.clientX - this.radius;
     var cY = e.clientY - this.radius;
 
-    var Impus = new Vector( Math.abs(this.ssx - cX), Math.abs(this.ssy - cY) );
-    Impus.mult(-1);
+    var Impus = new Vector( (cX-this.ssx), (cY-this.ssy) );
+    Impus.mult(-0.25);
     this.vector.add(Impus);
 
     delete this.ssx;

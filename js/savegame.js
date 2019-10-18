@@ -48,7 +48,7 @@ class SaveGame {
       "grav": new Vector(0, 0),
       "friction": 0.999,
       "objects": [
-        new CircleObject({r:br, x:w/4, y:h/2, color:"white"}),
+        new CircleObject({r:br, x:w/4, y:h/2, color:"white", snappable: true}),
 
         // stage 0
         new CircleObject({r:br, x:x, y:(h/2), ...randomProp(ball_variants)}),
