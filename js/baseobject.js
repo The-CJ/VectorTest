@@ -14,8 +14,8 @@ class BaseObject {
     this.grav = null; // every object can have individual grav, but if null -> use Area Grav
     this.friction = null; // every object can have individual friction, but if null -> use Area friction
 
-    this.snappable = x['snappable'] ? x['snappable'] : false;;
-    this.draggable = x['draggable'] ? x['draggable'] : false;;
+    this.snappable = x['snappable'] ? x['snappable'] : false;
+    this.draggable = x['draggable'] ? x['draggable'] : false;
   }
 
   getVector(vec) {
