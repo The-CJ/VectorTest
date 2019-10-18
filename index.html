@@ -77,9 +77,17 @@
           <input type="number" name="setVelocity" placeholder="max +- Velocity - Default: 25 "/>
           <button type="submit">Set max velocity</button>
         </form>
-
       </div>
 
+      <div id="debug_load" class="debug box" style="display: inline-grid;">
+        <span>Saves / Loads</span>
+        <form action="javascript:void(0)" onsubmit="javascript:debugLoad()" method="post" style="display: inline-grid;">
+          <select name="load">
+            <option value="pool">Poolbillard</option>
+          </select>
+          <button type="submit">Load</button>
+        </form>
+      </div>
       <button type="button" id="debug_close" onclick="hideDebug()">X</button>
 
     </div>

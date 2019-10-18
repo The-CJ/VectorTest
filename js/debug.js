@@ -96,3 +96,10 @@ function debugMaxVelocity() {
     Obj.max_vector = vals;
   }
 }
+
+// loads
+function debugLoad() {
+  var ValueNode = document.getElementById('debug_load');
+  var values = Utils.extractNameValues(ValueNode);
+  INIT_PLAY_AREA.load( values["load"] );
+}
