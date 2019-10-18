@@ -202,8 +202,8 @@ class CircleObject extends BaseObject {
     e = e || window.event;
     e.preventDefault();
     this.vector = new Vector();
-    this.pos_x = e.clientX - this.radius;
-    this.pos_y = e.clientY - this.radius;
+    this.pos_x = e.clientX - ((window.innerWidth - this.Area.HTMLObject.offsetWidth) / 2);
+    this.pos_y = e.clientY - ((window.innerHeight - this.Area.HTMLObject.offsetHeight) / 2);
   }
 
   dragStop() {
@@ -223,8 +223,8 @@ class CircleObject extends BaseObject {
   snapCalc(e) {
     e = e || window.event;
     e.preventDefault();
-    var cX = e.clientX - this.radius;
-    var cY = e.clientY - this.radius;
+    var cX = e.clientX - ((window.innerWidth - this.Area.HTMLObject.offsetWidth) / 2);
+    var cY = e.clientY - ((window.innerHeight - this.Area.HTMLObject.offsetHeight) / 2);
 
     var Impus = new Vector( (cX-this.pos_x), (cY-this.pos_y) );
     Impus.mult(-0.25);

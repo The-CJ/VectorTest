@@ -60,7 +60,6 @@ function debugGenerateRandom() {
     "draggable": set_values["draggable"],
     "snappable": set_values["snappable"],
   };
-  console.log(r);
   INIT_PLAY_AREA.generateObject(r["type"], r);
 }
 
