@@ -5,7 +5,7 @@ class PlayArea {
     if (!this.HTMLObject) { throw "can't find #"+this.area_id; }
 
     this.objects = x["objects"] ? x["objects"] : [];
-    this.update_delay = x["update_delay"] ? x["update_delay"] : 100;
+    this.update_delay = x["update_delay"] ? x["update_delay"] : 10;
     this.smooth = x["smooth"] ? x["smooth"] : false;
     this.grav = x["grav"] ? x["grav"] : new Vector();
     this.friction = x["friction"] ? x["friction"] : 1;
@@ -41,7 +41,6 @@ class PlayArea {
       for (var Obj of this.objects) {
         Obj.update();
       }
-
       await sleep(this.update_delay);
     }
   }

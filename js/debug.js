@@ -43,19 +43,24 @@ function debugSimSettings() {
 }
 
 function debugGenerateRandom() {
+  var ValueNode = document.getElementById('debug_generate');
+  var set_values = Utils.extractNameValues(ValueNode);
   var vA = Math.floor(Math.random() * 20)-10;
   var vB = Math.floor(Math.random() * 20)-10;
   var r = {
     "a": Math.floor(Math.random() * 200),
     "b": Math.floor(Math.random() * 200),
-    // "m": Math.floor(Math.random() * 50),
     "r": Math.floor(Math.random() * 99) + 1,
     "type": "circle",
     "v": Math.floor(Math.random() * 15),
     "vector": new Vector(vA, vB),
     "x": Math.floor(Math.random() * 600),
-    "y": Math.floor(Math.random() * 600)
+    "y": Math.floor(Math.random() * 600),
+    "bounce": set_values["bounce"],
+    "draggable": set_values["draggable"],
+    "snappable": set_values["snappable"],
   };
+  console.log(r);
   INIT_PLAY_AREA.generateObject(r["type"], r);
 }
 

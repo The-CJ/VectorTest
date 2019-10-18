@@ -28,6 +28,9 @@
           <tr><td>a: </td><td><input type="number" name="a" min="1" placeholder="length a - Default: 1"/></td></tr>
           <tr><td>b: </td><td><input type="number" name="b" min="1" placeholder="length b - Default: 1"/></td></tr>
           <tr><td><i>AB</i>: </td><td><input type="text" name="vector" placeholder="vector - Default: 0;0 (X;Y)"/></td></tr>
+          <tr><td>Bounce: </td><td><input type="checkbox" name="bounce"/></td></tr>
+          <tr><td>Snap: </td><td><input type="checkbox" name="snappable"/></td></tr>
+          <tr><td>Drag: </td><td><input type="checkbox" name="draggable"/></td></tr>
         </table>
 
         <button type="submit">Generate</button>
@@ -41,7 +44,7 @@
         <button type="button" onclick="debugSmooth()">Toggle Smoothing</button>
         <button type="button" onclick="debugLog()">Toggle Logging</button>
         <table>
-          <tr><td>T: </td><td><input type="number" name="t" min="0" value="100" placeholder="time mult. - Default: 100"/></td></tr>
+          <tr><td>T: </td><td><input type="number" name="t" min="0" value="10" placeholder="time mult. - Default: 10"/></td></tr>
         </table>
         <button type="submit">Update</button>
       </form>

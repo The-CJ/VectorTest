@@ -200,6 +200,7 @@ class CircleObject extends BaseObject {
   dragMove(e) {
     e = e || window.event;
     e.preventDefault();
+    this.vector = new Vector();
     this.pos_x = e.clientX - this.radius;
     this.pos_y = e.clientY - this.radius;
   }

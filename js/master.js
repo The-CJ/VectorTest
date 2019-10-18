@@ -22,7 +22,11 @@ var Utils = new (class {
     var r = {};
     var l = HTMLNode.querySelectorAll("[name]");
     for (var ValueNode of l) {
-      r[ ValueNode.getAttribute("name") ] = ValueNode.value;
+      if (ValueNode.getAttribute("type") == "checkbox" ) {
+        r[ ValueNode.getAttribute("name") ] = ValueNode.checked;
+      } else {
+        r[ ValueNode.getAttribute("name") ] = ValueNode.value;
+      }
     }
     return r;
   }
