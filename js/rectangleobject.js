@@ -4,6 +4,7 @@ class RectangleObject extends BaseObject {
     this.a = x['a'] ? parseInt(x['a']) : 1;
     this.b = x['b'] ? parseInt(x['b']) : 1;
     this.rotation = x['rotation'] ? parseInt(x['rotation']) : 0;
+    this.rotation_momentum = x['rotation_momentum'] ? parseFloat(x['rotation_momentum']) : 0;
     this.mass = this.mass ? this.mass : (this.a * this.b);
     this.color = x["color"] ? x["color"] : "yellow";
     this.border = x["border"] ? x["border"] : this.color;
@@ -29,6 +30,7 @@ class RectangleObject extends BaseObject {
     // move object to next pos based on vector
     this.pos_x = this.pos_x + this.vector.x;
     this.pos_y = this.pos_y + this.vector.y;
+    this.rotation = this.rotation + this.rotation_momentum;
 
     this.wallCheck();
 
@@ -38,9 +40,20 @@ class RectangleObject extends BaseObject {
       CollisionCalculator.collisionDetect(this, Ob);
     }
 
+    // max velocity changes
+    if (Math.abs(this.vector.x) > this.max_vector) {
+      if (this.vector.x > 0) { this.vector.x = this.max_vector; }
+      else { this.vector.x = -this.max_vector; }
+    }
+    if (Math.abs(this.vector.y) > this.max_vector) {
+      if (this.vector.y > 0) { this.vector.y = this.max_vector; }
+      else { this.vector.y = -this.max_vector; }
+    }
+
     // updating display
     this.HTMLObject.style.borderColor = this.border;
     this.HTMLObject.style.backgroundColor = this.color;
+    this.HTMLObject.style.transform = "rotate("+this.rotation+"deg)";
     this.HTMLObject.style.width = (this.a)+"px";
     this.HTMLObject.style.height = (this.b)+"px";
     this.HTMLObject.style.left = (this.pos_x - this.a/2)+"px";
@@ -52,6 +65,20 @@ class RectangleObject extends BaseObject {
     if (this.snappable) {
       this.HTMLObject.ondblclick = function () {thisO.snapStart()};
     }
+
+    // after all movement is complete, set vectors based on grav and friction for next iteration
+    var G = this.grav ? this.grav : this.Area.grav;
+    var f = this.friction ? this.friction : this.Area.friction;
+
+    // G
+    this.vector.x += G.x;
+    this.vector.y += G.y;
+
+    // f
+    this.vector.x *= f;
+    this.vector.y *= f;
+
+    this.eventUpdateEnd();
   }
 
   wallCheck() {
