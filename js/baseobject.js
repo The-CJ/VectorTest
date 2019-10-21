@@ -10,7 +10,6 @@ class BaseObject {
     this.border = x["border"] ? x["border"] : this.color;
     this.vector = this.getVector(x["vector"]);
     this.max_vector = x["max_vector"] ? x["max_vector"] : 30;
-    this.oob = {n:0, s:0, w:0, e:0};
     this.reset_point = {x:this.pos_x, y:this.pos_y};
     this.grav = null; // every object can have individual grav, but if null -> use Area Grav
     this.friction = null; // every object can have individual friction, but if null -> use Area friction
