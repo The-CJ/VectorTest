@@ -3,6 +3,7 @@ class CircleObject extends BaseObject {
     super(x);
     this.radius = x['r'] ? parseInt(x['r']) : 1;
     this.mass = this.mass ? this.mass : (Math.PI * (this.radius**2));
+    this.color = x["color"] ? x["color"] : "green";
   }
 
   generateHTMLObject() {
