@@ -1,4 +1,4 @@
-class RactangleObject extends BaseObject {
+class RectangleObject extends BaseObject {
   constructor(x={}) {
     super(x);
     this.a = x['a'] ? parseInt(x['a']) : 1;
@@ -8,7 +8,7 @@ class RactangleObject extends BaseObject {
 
   generateHTMLObject() {
     // generate from phantom and stick to this.HTMLObject
-    this.HTMLObject = document.querySelector("[phantom-models] > .object.ractangle").cloneNode(true);
+    this.HTMLObject = document.querySelector("[phantom-models] > .object.rectangle").cloneNode(true);
     this.Area.HTMLObject.appendChild(this.HTMLObject);
     this.eventCreate();
     this.update();
@@ -24,7 +24,6 @@ class RactangleObject extends BaseObject {
     }
 
     // updating display
-    console.log(this);
     this.HTMLObject.style.borderColor = this.border;
     this.HTMLObject.style.backgroundColor = this.color;
     this.HTMLObject.style.width = (this.a)+"px";
