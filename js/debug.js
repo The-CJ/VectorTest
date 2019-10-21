@@ -51,7 +51,7 @@ function debugGenerateRandom() {
     "a": Math.floor(Math.random() * 200),
     "b": Math.floor(Math.random() * 200),
     "r": Math.floor(Math.random() * 99) + 1,
-    "type": "circle",
+    "type": set_values["type"] ? set_values["type"] : "circle",
     "v": Math.floor(Math.random() * 15),
     "vector": new Vector(vA, vB),
     "x": Math.floor(Math.random() * 600),
