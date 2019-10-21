@@ -3,6 +3,7 @@ class RectangleObject extends BaseObject {
     super(x);
     this.a = x['a'] ? parseInt(x['a']) : 1;
     this.b = x['b'] ? parseInt(x['b']) : 1;
+    this.rotation = x['rotation'] ? parseInt(x['rotation']) : 0;
     this.mass = this.mass ? this.mass : (this.a * this.b);
   }
 
@@ -23,6 +24,12 @@ class RectangleObject extends BaseObject {
       this.HTMLObject.style.transitionDuration = this.Area.update_delay + "ms";
     }
 
+    // move object to next pos based on vector
+    this.pos_x = this.pos_x + this.vector.x;
+    this.pos_y = this.pos_y + this.vector.y;
+
+    this.wallCheck();
+
     // updating display
     this.HTMLObject.style.borderColor = this.border;
     this.HTMLObject.style.backgroundColor = this.color;
@@ -36,6 +43,36 @@ class RectangleObject extends BaseObject {
     }
     if (this.snappable) {
       this.HTMLObject.ondblclick = function () {thisO.snapStart()};
+    }
+  }
+
+  wallCheck() {
+    // wall collision | west
+    if ( (this.pos_x-(this.a/2) ) <= 0) {
+      this.pos_x = this.a/2; // a half site between center and wall
+      this.eventCollisionWall("west");
+      this.vector.x = (this.vector.x * -1);
+    }
+
+    // wall collision | east
+    if ( (this.pos_x+(this.a/2) ) >= this.Area.HTMLObject.offsetWidth) {
+      this.pos_x = this.Area.HTMLObject.offsetWidth - this.a/2; // a half site between center and wall
+      this.eventCollisionWall("east");
+      this.vector.x = (this.vector.x * -1);
+    }
+
+    // wall collision | north
+    if ( (this.pos_y-(this.b/2) ) <= 0) {
+      this.pos_y = (this.b/2); // a half between center and wall
+      this.eventCollisionWall("north");
+      this.vector.y = (this.vector.y * -1);
+    }
+
+    // wall collision | south
+    if ( (this.pos_y+(this.b/2) ) >= this.Area.HTMLObject.offsetHeight) {
+      this.pos_y = this.Area.HTMLObject.offsetHeight - this.b/2; // a half site between center and wall
+      this.eventCollisionWall("south");
+      this.vector.y = (this.vector.y * -1);
     }
   }
 
