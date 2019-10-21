@@ -30,6 +30,12 @@ class RectangleObject extends BaseObject {
 
     this.wallCheck();
 
+    // test collision with other objects
+    for (var Ob of this.Area.objects) {
+      if (Ob === this) { continue; } // ignore self
+      CollisionCalculator.collisionDetect(this, Ob);
+    }
+
     // updating display
     this.HTMLObject.style.borderColor = this.border;
     this.HTMLObject.style.backgroundColor = this.color;

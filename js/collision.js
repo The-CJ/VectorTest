@@ -6,11 +6,23 @@ var CollisionCalculator = new (class {
   collisionDetect(O1, O2) {
     var collide_info = null;
 
+    // circle x circle
     if (O1 instanceof CircleObject && O2 instanceof CircleObject) {
       collide_info = this.test_collision_CircleObject_CircleObject(O1, O2);
       if (collide_info) {
         O1.eventCollisionObject(O2, collide_info);
         return this.calc_collision_CircleObject_CircleObject(O1, O2, collide_info);
+      } else {
+        return false;
+      }
+    }
+
+    // rectangle x rectangle
+    else if ( (O1 instanceof RectangleObject && O2 instanceof RectangleObject) ) {
+      collide_info = this.test_collision_RectangleObject_RectangleObject(O1, O2);
+      if (collide_info) {
+        O1.eventCollisionObject(O2, collide_info);
+        return this.calc_collision_RectangleObject_RectangleObject(O1, O2, collide_info);
       } else {
         return false;
       }
