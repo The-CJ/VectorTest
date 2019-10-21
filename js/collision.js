@@ -82,7 +82,21 @@ var CollisionCalculator = new (class {
   }
 
   test_collision_RectangleObject_RectangleObject(RO1, RO2) {
+      var c = false;
+      var dx = Math.abs( (RO1.pos_x - RO2.pos_x) );
+      var dy = Math.abs( (RO1.pos_y - RO2.pos_y) );
+      if ( dx < ((RO1.a/2) + (RO2.a/2)) ) {
+        if ( dy < ((RO1.b/2) + (RO2.b/2)) ) {
+          c = true;
+        }
+      }
 
+      if (c) {
+        // get hit direction
+        return {"hit":"dir"};
+      } else {
+        return false;
+      }
   }
   calc_collision_RectangleObject_RectangleObject(RO1, RO2, collide_info) {
 
