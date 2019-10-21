@@ -3,9 +3,34 @@ var CollisionCalculator = new (class {
 
   }
 
-  collisionAutodetect() {}
+  collisionDetect(O1, O2) {
+    var collide_info = null;
 
-  collision_CircleObject_CircleObject(CO1, CO2, collide_info) {
+    if (O1 instanceof CircleObject && O2 instanceof CircleObject) {
+      collide_info = this.test_collision_CircleObject_CircleObject(O1, O2);
+      if (collide_info) {
+        O1.eventCollisionObject(O2, collide_info);
+        return this.calc_collision_CircleObject_CircleObject(O1, O2, collide_info);
+      } else {
+        return false;
+      }
+    }
+
+  }
+
+  test_collision_CircleObject_CircleObject(CO1, CO2) {
+    var a = Math.abs( CO1.pos_y - CO2.pos_y );
+    var b = Math.abs( CO1.pos_x - CO2.pos_x );
+    var hyp = Math.sqrt( (Math.pow(a, 2) + Math.pow(b, 2)) );
+    // hyp is the distance between both inner points, if this distance is smaller than both radius, they collide
+    if (hyp < (CO1.radius + CO2.radius)) {
+      return {"hyp":hyp};
+    } else {
+      return false;
+    }
+  }
+
+  calc_collision_CircleObject_CircleObject(CO1, CO2, collide_info) {
     // before checking collision vector changes we need to set balls in save positions
     var overlap = 0.5 * ( collide_info.hyp - CO1.radius - CO2.radius );
     CO1.pos_x -= overlap * (CO1.pos_x - CO2.pos_x) / collide_info.hyp;

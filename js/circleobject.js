@@ -31,16 +31,7 @@ class CircleObject extends BaseObject {
     // test collision with other objects
     for (var Ob of this.Area.objects) {
       if (Ob === this) { continue; } // ignore self
-      var collide = false;
-
-      // circle
-      if (Ob instanceof CircleObject) {
-        collide = this.testCollisionWithCircleObject(Ob);
-        if (collide != false) {
-          this.eventCollisionObject(Ob, collide);
-          CollisionCalculator.collision_CircleObject_CircleObject(this, Ob, collide);
-        }
-      }
+      CollisionCalculator.collisionDetect(this, Ob);
     }
 
     // max velocity changes
