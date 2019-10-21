@@ -1,3 +1,13 @@
 body {
   background-color: #333;
 }
+#main_area {
+  width: 95vw;
+  height: 95vh;
+  box-sizing: content-box;
+  border: 2px solid white;
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  margin: auto;
+  overflow: hidden;
