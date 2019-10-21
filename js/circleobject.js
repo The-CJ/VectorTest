@@ -38,7 +38,7 @@ class CircleObject extends BaseObject {
         collide = this.testCollisionWithCircleObject(Ob);
         if (collide != false) {
           this.eventCollisionObject(Ob, collide);
-          this.calcCollisionWithCircleObject(Ob, collide);
+          CollisionCalculator.collision_CircleObject_CircleObject(this, Ob, collide);
         }
       }
     }
@@ -123,46 +123,6 @@ class CircleObject extends BaseObject {
     } else {
       return false;
     }
-  }
-
-  calcCollisionWithCircleObject(Ob, collide_info) {
-    // before checking collision vector changes we need to set balls in save positions
-    var overlap = 0.5 * ( collide_info.hyp - this.radius - Ob.radius );
-    this.pos_x -= overlap * (this.pos_x - Ob.pos_x) / collide_info.hyp;
-    this.pos_y -= overlap * (this.pos_y - Ob.pos_y) / collide_info.hyp;
-
-    Ob.pos_y += overlap * (this.pos_y - Ob.pos_y) / collide_info.hyp;
-    Ob.pos_y += overlap * (this.pos_y - Ob.pos_y) / collide_info.hyp;
-
-    // after replacement, hyp = the sum of both radius
-    collide_info.hyp = Ob.radius + this.radius;
-
-    // pushed back? good now physics
-    // get normalized vectors and generate tangent as well
-    var nx = (Ob.pos_x - this.pos_x) / collide_info.hyp;
-    var ny = (Ob.pos_y - this.pos_y) / collide_info.hyp;
-
-    var normalVector = new Vector(nx, ny);
-    var tangentVector = new Vector(-ny, nx);
-
-    // get scalar dot product from tangent
-    var dpTanThis = this.vector.x * tangentVector.x + this.vector.y * tangentVector.y;
-    var dpTanOb = Ob.vector.x * tangentVector.x + Ob.vector.y * tangentVector.y;
-
-    // get scalar dot product from normal
-    var dpNormThis = this.vector.x * normalVector.x + this.vector.y * normalVector.y;
-    var dpNormOb = Ob.vector.x * normalVector.x + Ob.vector.y * normalVector.y;
-
-    // get scalar convertion of momentum
-    var comThis = ( dpNormThis * (this.mass - Ob.mass) + 2 * Ob.mass * dpNormOb ) / (this.mass + Ob.mass);
-    var comOb = ( dpNormOb * (Ob.mass - this.mass) + 2 * this.mass * dpNormThis ) / (this.mass + Ob.mass);
-
-    // set new vector based by tangent times dot product + the normal speed convertion
-    this.vector.x = (tangentVector.x * dpTanThis) + (normalVector.x * comThis);
-    this.vector.y = (tangentVector.y * dpTanThis) + (normalVector.y * comThis);
-    // same but for other part
-    Ob.vector.x = (tangentVector.x * dpTanOb) + (normalVector.x * comOb);
-    Ob.vector.y = (tangentVector.y * dpTanOb) + (normalVector.y * comOb);
   }
 
   // drag
