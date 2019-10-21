@@ -41,7 +41,6 @@ var CollisionCalculator = new (class {
       return false;
     }
   }
-
   calc_collision_CircleObject_CircleObject(CO1, CO2, collide_info) {
     // before checking collision vector changes we need to set balls in save positions
     var overlap = 0.5 * ( collide_info.hyp - CO1.radius - CO2.radius );
@@ -82,4 +81,10 @@ var CollisionCalculator = new (class {
     CO2.vector.y = (tangentVector.y * dpTanCO2) + (normalVector.y * comCO2);
   }
 
+  test_collision_RectangleObject_RectangleObject(RO1, RO2) {
+
+  }
+  calc_collision_RectangleObject_RectangleObject(RO1, RO2, collide_info) {
+
+  }
 })

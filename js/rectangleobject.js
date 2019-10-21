@@ -6,6 +6,7 @@ class RectangleObject extends BaseObject {
     this.rotation = x['rotation'] ? parseInt(x['rotation']) : 0;
     this.mass = this.mass ? this.mass : (this.a * this.b);
     this.color = x["color"] ? x["color"] : "yellow";
+    this.border = x["border"] ? x["border"] : this.color;
   }
 
   generateHTMLObject() {
