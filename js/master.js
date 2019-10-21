@@ -12,12 +12,17 @@ var Render = Matter.Render.create({
   }
 });
 
-var Anchor = Matter.Bodies.circle(300,10, 5, {isStatic: true});
+var MouseAction = Matter.MouseConstraint.create(Engine, {
+  element: Area
+})
+
+var Anchor = Matter.Bodies.circle(300,10, 5, {isStatic: true, render:{fillStyle:"red"}});
 
 var Box1 = Matter.Bodies.rectangle(350,275,50,50);
 var Box2 = Matter.Bodies.rectangle(250,275,50,50);
 var Floor = Matter.Bodies.rectangle(250,550,500,10, {isStatic: true});
 
 Matter.World.add(Engine.world, [Floor, Box1, Box2, Anchor]);
+Matter.World.add(Engine.world, [MouseAction]);
 Matter.Engine.run(Engine);
 Matter.Render.run(Render);
