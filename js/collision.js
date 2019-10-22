@@ -47,7 +47,7 @@ var CollisionCalculator = new (class {
     CO1.pos_x -= overlap * (CO1.pos_x - CO2.pos_x) / collide_info.hyp;
     CO1.pos_y -= overlap * (CO1.pos_y - CO2.pos_y) / collide_info.hyp;
 
-    CO2.pos_y += overlap * (CO1.pos_y - CO2.pos_y) / collide_info.hyp;
+    CO2.pos_x += overlap * (CO1.pos_x - CO2.pos_x) / collide_info.hyp;
     CO2.pos_y += overlap * (CO1.pos_y - CO2.pos_y) / collide_info.hyp;
 
     // after replacement, hyp = the sum of both radius
