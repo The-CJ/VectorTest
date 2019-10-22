@@ -82,23 +82,35 @@ var CollisionCalculator = new (class {
   }
 
   test_collision_RectangleObject_RectangleObject(RO1, RO2) {
-      var c = false;
+      // get distance between the 2 middle points
       var dx = Math.abs( (RO1.pos_x - RO2.pos_x) );
       var dy = Math.abs( (RO1.pos_y - RO2.pos_y) );
-      if ( dx < ((RO1.a/2) + (RO2.a/2)) ) {
-        if ( dy < ((RO1.b/2) + (RO2.b/2)) ) {
-          c = true;
-        }
-      }
-
-      if (c) {
-        // get hit direction
-        return {"hit":"dir"};
+      // get minimum distance between 2 points
+      var mdx = (RO1.a + RO2.a) / 2;
+      var mdy = (RO1.b + RO2.b) / 2;
+      if ( dx < mdx && dy < mdy ) {
+        return {
+          dx:dx,
+          dy:dy,
+          mdx: mdx,
+          mdy: mdy
+        };
       } else {
         return false;
       }
   }
   calc_collision_RectangleObject_RectangleObject(RO1, RO2, collide_info) {
+    // before checking collision vector changes we need to set balls in save positions
+    var overlap_x = 0.5 *  / collide_info.mdx;
+    var overlap_y = 0.5 *  / collide_info.mdy;
+
+    RO1.pos_x -= overlap_x;
+    RO1.pos_y -= overlap_y;
+
+    RO2.pos_x += overlap_x;
+    RO2.pos_y += overlap_y;
+
+
 
   }
 })
